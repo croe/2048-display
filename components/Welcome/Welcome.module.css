@@ -1,0 +1,21 @@
+.title_wrap {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-size: rem(300px);
+  font-weight: 900;
+  letter-spacing: rem(-2px);
+}
+
+.storyline {
+  /*margin-top: -300px;*/
+  font-family: 'Zen Kaku Gothic New', serif;
+  font-size: rem(40px);
+  font-weight: bold;
+  line-height: 2;
+}
