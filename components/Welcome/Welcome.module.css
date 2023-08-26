@@ -1,5 +1,7 @@
 .title_wrap {
+  position: relative;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   align-items: center;
   justify-content: center;
@@ -10,12 +12,35 @@
   font-size: rem(300px);
   font-weight: 900;
   letter-spacing: rem(-2px);
+  line-height: 1;
+}
+
+.subline {
+  font-size: 60px;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .storyline {
+  max-width: 900px;
+  margin: 0 auto 200px;
+}
+
+.storyline p {
   /*margin-top: -300px;*/
   font-family: 'Zen Kaku Gothic New', serif;
-  font-size: rem(40px);
+  font-size: rem(38px);
   font-weight: bold;
-  line-height: 2;
+  line-height: 2.5;
+  margin-bottom: 40px;
+}
+
+.storyline h2 {
+  font-family: 'lato', serif;
+  font-size: 50px;
 }
