@@ -1,6 +1,7 @@
 'use client'
 
-import { Text, Title, Button, Modal } from '@mantine/core'
+import { useEffect } from 'react'
+import { Text, Title, Button, useMantineColorScheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import classes from './Welcome.module.css'
 import { ScrollPromotion } from '@/components/ScrollPromotion/ScrollPromotion'
@@ -8,9 +9,12 @@ import { ModalIPMS } from '@/components/ModalIPMS/ModalIPMS'
 import { ModalRDC } from '@/components/ModalRDC/ModalRDC'
 
 export const Welcome = () => {
+  const { setColorScheme } = useMantineColorScheme()
   const [openedRDC, {open: openRDC, close: closeRDC}] = useDisclosure(false)
   const [openedIPMS, {open: openIPMS, close: closeIPMS}] = useDisclosure(false)
-
+  useEffect(() => {
+    setColorScheme('dark')
+  }, [])
 
   return (
     <>
