@@ -4,8 +4,8 @@ import { MantineProvider, ColorSchemeScript } from '@mantine/core'
 // import { Notifications } from '@mantine/notifications'
 
 export const metadata = {
-  title: 'Mantine Next.js template',
-  description: 'I am using Mantine with Next.js!',
+  title: '2048',
+  description: 'IPMS x RDC',
 }
 
 export default function RootLayout({ children }: { children: any }) {

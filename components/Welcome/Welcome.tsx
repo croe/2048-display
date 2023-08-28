@@ -1,8 +1,17 @@
-import { Text, Title, Button } from '@mantine/core'
+'use client'
+
+import { Text, Title, Button, Modal } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 import classes from './Welcome.module.css'
 import { ScrollPromotion } from '@/components/ScrollPromotion/ScrollPromotion'
+import { ModalIPMS } from '@/components/ModalIPMS/ModalIPMS'
+import { ModalRDC } from '@/components/ModalRDC/ModalRDC'
 
 export const Welcome = () => {
+  const [openedRDC, {open: openRDC, close: closeRDC}] = useDisclosure(false)
+  const [openedIPMS, {open: openIPMS, close: closeIPMS}] = useDisclosure(false)
+
+
   return (
     <>
       <div className={classes.title_wrap}>
@@ -22,7 +31,8 @@ export const Welcome = () => {
         <p>それがしばらく続いた後、若者を中心に一つの動きが広がっていった。「何かがあるわけじゃない、ただ疑問なだけだ」</p>
         <p>自由で自律分散な社会を求めた彼らは自分たちを「OWLS」と呼び、互いに個人を明かさずに団結を示そうとしている。</p>
         <p>そんな世界のストーリー。</p>
-        <Button size="xl">MORE</Button>
+        <Button size="xl" onClick={openIPMS}>MORE</Button>
+        <Button size="xl" onClick={openRDC}>MORE</Button>
       </div>
       <div className={classes.storyline}>
         <Title order={2}>IPMS</Title>
@@ -36,6 +46,8 @@ export const Welcome = () => {
         <p>Web3時代の新しいファッションをつくる「RUE DE CHAT」は、メタバースで着用するデジタルファッションと、それらのビジュアルや思想をダイレクトに投影させたフィジカルファッションを作製して現実の世界でも着用する、というファッションの新しい楽しさを追求したブランド</p>
         <Button size="xl">MORE</Button>
       </div>
+      <ModalIPMS opened={openedIPMS} close={closeIPMS} />
+      <ModalRDC opened={openedRDC} close={closeRDC} />
     </>
   )
 }
