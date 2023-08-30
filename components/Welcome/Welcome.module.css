@@ -79,3 +79,46 @@
   height: auto;
   object-fit: contain;
 }
+
+.members {
+  display: flex;
+  gap: 30px;
+  padding: 0 0 100px;
+}
+
+.member {
+  width: calc(100% / 3 - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.member h3 {
+  text-align: center;
+}
+
+.member_qr img{
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.avator {
+  width: 200px;
+  height: 200px;
+  background-size: contain;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ibkit {
+  background-image: url("./ibkit-prof.jpg");
+}
+.rdc {
+  background-image: url("./rdc-prof.jpg");
+}
+.akihiro {
+  background-image: url("./kato-prof.jpg");
+}

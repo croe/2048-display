@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import Image from 'next/image'
 import {
-  Text, Blockquote, Button, useMantineColorScheme, Avatar } from '@mantine/core'
+  Text, Blockquote, Button, useMantineColorScheme } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import classes from './Welcome.module.css'
 import AOS from 'aos'
@@ -15,12 +15,12 @@ import { ModalOWLS } from '@/components/ModalOWLS/ModalOWLS'
 import { ModalSHEEPS } from '@/components/ModalSHEEPS/ModalSHEEPS'
 import { CustomCursor } from '@/components/CustomCursor/CustomCursor'
 import OpenseaImg from './opensea.png'
+import AkihiroImg from './akihiro.png'
 import IbkitImg from './ibkit.png'
-import Ruedechat from './ruedechat.png'
+import RuedechatImg from './ruedechat.png'
 import Step1 from './owls1.png'
 import Step2 from './owls2.png'
 import Step3 from './owls3.png'
-import ReactPlayer from 'react-player'
 
 export const Welcome = () => {
   const { setColorScheme } = useMantineColorScheme()
@@ -31,23 +31,20 @@ export const Welcome = () => {
   useEffect(() => {
     setColorScheme('dark')
     AOS.init({
-      debounceDelay: 50, // ウィンドウのサイズ変更時に使用するデバウンスの遅延時間（上級者向け)
-      throttleDelay: 99, // ページをスクロールする際のスロットルの遅延時間 (上級者向け)
-
-
-      // `data-aos-*` 属性で要素ごとにオーバーライドできる設定です。
-      offset: 200, // 元のトリガーポイントからのオフセット(px単位)
-      delay: 300, // 0から3000までの値を、50msステップで設定
-      duration: 1000, // 0～3000の値を、50msステップで設定
-      easing: 'ease-in-out', // AOSアニメーションのデフォルトイージング
-      once: false, // - スクロールダウン中に、アニメーションを一度だけ行うかどうか
-      mirror: false, // スクロール中に要素をアニメーションさせるかどうか
+      debounceDelay: 50,
+      throttleDelay: 99,
+      offset: 200,
+      delay: 300,
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: false,
+      mirror: false,
       anchorPlacement: 'top-bottom',
     })
   }, [])
 
   return (
-    <div>
+    <>
       <div className={classes.title_wrap}>
         <Text className={classes.title} ta="center" variant="gradient" gradient={{ from: 'pink', to: 'yellow' }}>2048</Text>
         <Text className={classes.subline} ta="center" variant="gradient" gradient={{ from: 'blue', to: 'yellow' }}>IPMS × RUE DE CHAT</Text>
@@ -75,16 +72,35 @@ export const Welcome = () => {
         <Image src={OpenseaImg} alt="opensea" />
       </div>
       <hr/>
-      <div className={classes.storyline}>
-        <Button variant="transparent" onClick={openRDC}>RDC</Button>
-        member
-        member
+      <h2>MEMBERS</h2>
+      <div className={classes.members}>
+        <div className={classes.member}>
+          <div className={`${classes.avator} ${classes.akihiro}`} />
+          <h3>Akihiro Kato</h3>
+          <div className={classes.member_qr}>
+            <Image src={AkihiroImg} alt='' />
+          </div>
+        </div>
+        <div className={classes.member}>
+          <div className={`${classes.avator} ${classes.ibkit}`} />
+          <h3>IBKIT</h3>
+          <div className={classes.member_qr}>
+            <Image src={IbkitImg} alt='' />
+          </div>
+        </div>
+        <div className={classes.member}>
+          <div className={`${classes.avator} ${classes.rdc}`} />
+          <h3>RUE DE CHAT</h3>
+          <div className={classes.member_qr}>
+            <Image src={RuedechatImg} alt='' />
+          </div>
+        </div>
       </div>
       <ModalIPMS opened={openedIPMS} close={closeIPMS} />
       <ModalRDC opened={openedRDC} close={closeRDC} />
       <ModalOWLS opened={openedOWLS} close={closeOWLS} />
       <ModalSHEEPS opened={openedSHEEPS} close={closeSHEEPS} />
       <CustomCursor />
-    </div>
+    </>
   )
 }
