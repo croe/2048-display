@@ -1,0 +1,17 @@
+.container {
+  padding: 0 20px 20px;
+  font-size: 28px;
+  line-height: 1.7;
+}
+
+.image_wrap {
+  margin-top: 50px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  width: 100%;
+}
+.image_wrap img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

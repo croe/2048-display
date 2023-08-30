@@ -1,0 +1,16 @@
+body {
+  cursor: none!important;
+}
+
+body a:hover, body button:hover {
+  cursor: none!important;
+}
+
+.mantine-Modal-title {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.mantine-Modal-content {
+  font-family: 'Zen Kaku Gothic New', serif;
+}

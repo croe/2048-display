@@ -6,7 +6,7 @@ export const ScrollPromotion = () => {
     <div className={classes.wrapper}>
       <p className={classes.scroll}>SCROLL</p>
       <div className={classes.icon_wrap}>
-        <BsChevronDown size={100} />
+        <BsChevronDown size={50} />
       </div>
     </div>
   )

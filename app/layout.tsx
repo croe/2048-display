@@ -1,7 +1,6 @@
 import '@mantine/core/styles.css'
-import React from 'react'
+import './global.css'
 import { MantineProvider, ColorSchemeScript } from '@mantine/core'
-// import { Notifications } from '@mantine/notifications'
 
 export const metadata = {
   title: '2048',

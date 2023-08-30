@@ -1,57 +1,90 @@
 'use client'
 
 import { useEffect } from 'react'
-import { Text, Title, Button, useMantineColorScheme } from '@mantine/core'
+import Image from 'next/image'
+import {
+  Text, Blockquote, Button, useMantineColorScheme, Avatar } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import classes from './Welcome.module.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import { ScrollPromotion } from '@/components/ScrollPromotion/ScrollPromotion'
 import { ModalIPMS } from '@/components/ModalIPMS/ModalIPMS'
 import { ModalRDC } from '@/components/ModalRDC/ModalRDC'
+import { ModalOWLS } from '@/components/ModalOWLS/ModalOWLS'
+import { ModalSHEEPS } from '@/components/ModalSHEEPS/ModalSHEEPS'
+import { CustomCursor } from '@/components/CustomCursor/CustomCursor'
+import OpenseaImg from './opensea.png'
+import IbkitImg from './ibkit.png'
+import Ruedechat from './ruedechat.png'
+import Step1 from './owls1.png'
+import Step2 from './owls2.png'
+import Step3 from './owls3.png'
+import ReactPlayer from 'react-player'
 
 export const Welcome = () => {
   const { setColorScheme } = useMantineColorScheme()
   const [openedRDC, {open: openRDC, close: closeRDC}] = useDisclosure(false)
   const [openedIPMS, {open: openIPMS, close: closeIPMS}] = useDisclosure(false)
+  const [openedOWLS, {open: openOWLS, close: closeOWLS}] = useDisclosure(false)
+  const [openedSHEEPS, {open: openSHEEPS, close: closeSHEEPS}] = useDisclosure(false)
   useEffect(() => {
     setColorScheme('dark')
+    AOS.init({
+      debounceDelay: 50, // ウィンドウのサイズ変更時に使用するデバウンスの遅延時間（上級者向け)
+      throttleDelay: 99, // ページをスクロールする際のスロットルの遅延時間 (上級者向け)
+
+
+      // `data-aos-*` 属性で要素ごとにオーバーライドできる設定です。
+      offset: 200, // 元のトリガーポイントからのオフセット(px単位)
+      delay: 300, // 0から3000までの値を、50msステップで設定
+      duration: 1000, // 0～3000の値を、50msステップで設定
+      easing: 'ease-in-out', // AOSアニメーションのデフォルトイージング
+      once: false, // - スクロールダウン中に、アニメーションを一度だけ行うかどうか
+      mirror: false, // スクロール中に要素をアニメーションさせるかどうか
+      anchorPlacement: 'top-bottom',
+    })
   }, [])
 
   return (
-    <>
+    <div>
       <div className={classes.title_wrap}>
-        <Text className={classes.title} ta="center" variant="gradient" gradient={{ from: 'pink', to: 'yellow' }}>
-          2048
-        </Text>
-        <Text className={classes.subline} ta="center" variant="gradient" gradient={{ from: 'blue', to: 'yellow' }}>
-          IPMS × RUE DE CHAT
-        </Text>
+        <Text className={classes.title} ta="center" variant="gradient" gradient={{ from: 'pink', to: 'yellow' }}>2048</Text>
+        <Text className={classes.subline} ta="center" variant="gradient" gradient={{ from: 'blue', to: 'yellow' }}>IPMS × RUE DE CHAT</Text>
         <div className={classes.scroll}>
           <ScrollPromotion />
         </div>
       </div>
       <div className={classes.storyline}>
-        <p>未来予知型AI「SHEEP」によって紛争や事件が起こる前に予知されるようになった未来。</p>
-        <p>AIを頂点として超集権国家「SHEEPS」がつくられ、人々は安全安心を求めてこの社会にやってくる。</p>
-        <p>それがしばらく続いた後、若者を中心に一つの動きが広がっていった。「何かがあるわけじゃない、ただ疑問なだけだ」</p>
-        <p>自由で自律分散な社会を求めた彼らは自分たちを「OWLS」と呼び、互いに個人を明かさずに団結を示そうとしている。</p>
-        <p>そんな世界のストーリー。</p>
-        <Button size="xl" onClick={openIPMS}>MORE</Button>
-        <Button size="xl" onClick={openRDC}>MORE</Button>
+        <p data-aos="fade-up">未来予知型AI「SHEEP」によって紛争や事件が起こる前に予知されるようになった未来。AIを頂点として超集権国家「<Button variant="subtle" onClick={openSHEEPS}>SHEEPS</Button>」がつくられ、人々は安全安心を求めてこの社会にやってくる。</p>
+        <p data-aos="fade-up">しばらくして若者を中心に一つの動きが広がっていった。「何かがあるわけじゃない、ただ疑問なだけだ」</p>
+        <p data-aos="fade-up">自由で自律分散な社会を求めた彼らは自分たちを<br/>「<Button variant="subtle" onClick={openOWLS}>OWLS</Button>」と呼び、互いを明かさないままに団結を<br/>示そうとしている。</p>
+        <p data-aos="fade-up">ある日、OWLSたちの集会が開催されることになり一つのメッセージが公開された。</p>
+        <br/>
+        <Blockquote data-aos="fade-up" className={classes.blockquote} color="gray" mt="xl">
+          <p>今回のOWLS集会では<Button variant="subtle" onClick={openIPMS}>IPMS</Button>で作る<Button variant="subtle" onClick={openRDC}>RUE DE CHAT</Button>のドレスか、フクロウの仮面がドレスコードだ。参加したいメンバーは次のリンクからNFTを取得しそれらを製作してくるように。</p>
+          <p>集会へは製作する過程で自然と辿り着けるようになっている。</p>
+        </Blockquote>
       </div>
+      <div className={classes.steps}>
+        <Image data-aos="fade-up" data-aos-delay="300" src={Step1} alt="owls1" />
+        <Image data-aos="fade-up" data-aos-delay="300" src={Step2} alt="owls2" />
+        <Image data-aos="fade-up" data-aos-delay="300" src={Step3} alt="owls3" />
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="300" className={classes.opensea}>
+        <Image src={OpenseaImg} alt="opensea" />
+      </div>
+      <hr/>
       <div className={classes.storyline}>
-        <Title order={2}>IPMS</Title>
-        <p>IPMSとは、以下の3つの役割に分けられるユーザーが物理的な製造（調達）の各工程を分散的に担うことで、互いを信用せず、個人情報を一切渡さないまま、一連の製造（調達）工程を達成可能なシステムである。</p>
-        <p>製品の設計図、原型のモデルを開発する「Sculptor」<br/>
-          原型からパーツを製造・複製し、秘匿した場所を暗号化NFTで共有する「Duplicator」<br/>
-          最終的に全てのパーツを入手して組み合わせる「Assembler」</p>
-        <p>全ての役割は独立して動くことができ、非同期で各工程が進んでいく。
-          費用は「Assembler」が支払い、「Sculptor」「Duplicator」は「Assembler」の完了報告によって報酬を得る。システム利用者の拡大に従って分散性が高まり、物理的な調達距離を小さくすることができる。</p>
-        <Title order={2}>RUE DE CHAT</Title>
-        <p>Web3時代の新しいファッションをつくる「RUE DE CHAT」は、メタバースで着用するデジタルファッションと、それらのビジュアルや思想をダイレクトに投影させたフィジカルファッションを作製して現実の世界でも着用する、というファッションの新しい楽しさを追求したブランド</p>
-        <Button size="xl">MORE</Button>
+        <Button variant="transparent" onClick={openRDC}>RDC</Button>
+        member
+        member
       </div>
       <ModalIPMS opened={openedIPMS} close={closeIPMS} />
       <ModalRDC opened={openedRDC} close={closeRDC} />
-    </>
+      <ModalOWLS opened={openedOWLS} close={closeOWLS} />
+      <ModalSHEEPS opened={openedSHEEPS} close={closeSHEEPS} />
+      <CustomCursor />
+    </div>
   )
 }
